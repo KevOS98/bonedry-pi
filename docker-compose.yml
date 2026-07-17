@@ -29,8 +29,10 @@ services:
       # Shared obsidian vault for collaborative note read/writes.
       - ./mounts/obsidianvaultpi:/app/obsidian
 
-      # Credential list for Pi agent. Read only.
+      # Credential directories for Pi agent.
+      # *** IMPORTANT: To make READ ONLY, append :ro to both mounts. ***
       - ./mounts/pi-credentials:/app/pi-credentials
+      # *** IMPORTANT: Mount a dedicated Pi SSH identity here, not your personal key! ***
       - ./mounts/pi-credentials/ssh:/root/.ssh
 
     # Required for Pi's interactive TUI mode
