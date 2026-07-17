@@ -1,0 +1,38 @@
+services:
+  pi-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pi-agent
+    restart: unless-stopped
+
+    environment:
+      # Compose reads this value from .env automatically at runtime.
+      # The compose file itself never contains the actual key.
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+
+    volumes:
+      # Pi's config dir — extensions, skills, AGENTS.md, settings, sessions, auth
+      # Host path persists across container rebuilds. Edits do not require rebuild;
+      # use Pi /reload after material AGENTS.md / instruction changes.
+      - ./mounts/pi-config:/root/.pi
+
+      # SQLite database for Pi's memory. Host path persists across container rebuilds.
+      - ./mounts/memory/sqlite:/app/memory/sqlite
+
+      # Agent makes environment suggestions here on expicit prompt only.
+      - ./mounts/suggestions:/app/suggestions
+
+      # Active project files (Godot projects, scripts, etc.)
+      - ./mounts/workspace:/app/workspace
+
+      # Shared obsidian vault for collaborative note read/writes.
+      - ./mounts/obsidianvaultpi:/app/obsidian
+
+      # Credential list for Pi agent. Read only.
+      - ./mounts/pi-credentials:/app/pi-credentials
+      - ./mounts/pi-credentials/ssh:/root/.ssh
+
+    # Required for Pi's interactive TUI mode
+    stdin_open: true
+    tty: true
