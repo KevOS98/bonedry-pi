@@ -1,4 +1,4 @@
-## BareBones Containerized Pi
+# BareBones Docker Pi-Agent Container
 Simple Docker container configuration for Pi Agent. Cross session durable memory, Pi configuration, plugins, projects, extensions, and credentials. 
 
 # ReadMe
@@ -29,7 +29,7 @@ Simple Docker container configuration for Pi Agent. Cross session durable memory
 7. pi-agent/mounts/pi-credentials/ssh:/root/.ssh
 - This mount is included for container git auth if you decide to put ssh keys under credentials. I also personally have gitconfig info for Pi in a markdown here as well.
 
-## QuickStart
+# QuickStart
 
 1. Clone the repo
 
@@ -47,7 +47,7 @@ Simple Docker container configuration for Pi Agent. Cross session durable memory
 
 # If you're switching from a YOLO setup, just prompt Pi to set this up for you and explain your next steps.  Probably worth a quick evaluation from a trusted LLM to see if it's a good fit.
 
-## Parting Widsoms
+# Parting Widsoms
 
 - If you're considering riding the YOLO wave like I was before making this, remember that it only takes a single moment for something to blast your machine or expose your information. The only true container limitation here is the amount of bloat driven from initialization (which is low as possible) and the need to manually implement suggestions/. The setup time is a worthy moat between potential disaster and safety, and if you've stumbled upon this then I've done it for you :D.
 
