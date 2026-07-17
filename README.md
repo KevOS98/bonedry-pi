@@ -44,7 +44,7 @@ Checkout the compose.yml, Dockerfile, and .gitignore for the full directory moun
 
 3. Manually read and update the AGENTS.md, this file goes in mounts/pi-config/agent/ when you're done.
 
-4. cd back into pi-agent/ and run: cp .env.example .env
+4. cd back into bonedry-pi/ and run: cp .env.example .env
 
 5. Edit .env and replace your provider and key for safe container injection
 
