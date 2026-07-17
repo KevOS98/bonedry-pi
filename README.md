@@ -33,7 +33,7 @@ Simple Docker container configuration for Pi Agent. Cross session durable memory
 
 1. Clone the repo
 
-2. Manually read and update the AGENTS.md
+2. Manually read and update the AGENTS.md, this file goes in mounts/pi-config when you're done.
 
 3. cd into ./pi-agent/mounts/ and then run: mkdir -p memory/sqlite/ suggestions/ workspace/ obsidianvaultpi/ pi-credentials/
 
