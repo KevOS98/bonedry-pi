@@ -31,12 +31,17 @@ Checkout the compose.yml, Dockerfile, and .gitignore for the full directory moun
 - The obsidian vault is a collaboritve space for note read/write between host and container.
 
 6. bonedry-pi/mounts/pi-credentials:/app/pi-credentials
+* Not READ ONLY by default. Visit compose.yml and append :ro to this mount to apply READ ONLY permissions.
 - Pi-credentials/ contents are up to personal discretion, but they can hold any keys that enable authentication operations for the agent's identity.
 
 7. bonedry-pi/mounts/pi-credentials/ssh:/root/.ssh
+* Should you choose to use this, mount a dedicated Pi SSH identity here, NOT your personal key!
+* Not READ ONLY by default. Visit compose.yml and append :ro to this mount to apply READ ONLY permissions. I choose not to to prevent breaking known_hosts writes from Pi.
 - This mount is included for container git auth if you decide to put ssh keys under credentials. I also personally have gitconfig info for Pi in a markdown here as well.
 
 # QuickStart
+
+Prerequisites = Docker + Docker Compose installed
 
 1. Clone the repo
 
@@ -52,7 +57,9 @@ Checkout the compose.yml, Dockerfile, and .gitignore for the full directory moun
 
 - Bonus = installing pi-web-access is recommended from the official packages docs on first docker instance
 
-# Parting Widsoms
+# Parting Wisdoms
+
+- This architecture assumes some knowledge about Docker containers. If you are confused, I suggest going over it with a model to fully grasp before launching.
 
 - If you're considering riding the YOLO wave like I was before making this, remember that it only takes a single moment for something to blast your machine or expose your information. The only true container limitation here is the amount of bloat driven from initialization (which is low as possible) and the need to manually implement suggestions/. The setup time is a worthy moat between potential disaster and your machine, and if you've stumbled upon this then I've done it for you :D.
 
@@ -60,4 +67,4 @@ Checkout the compose.yml, Dockerfile, and .gitignore for the full directory moun
 
 - I'm probably gonna add some cool bone icon to load in new sessions at some point stay tuned.
 
-# If you're switching from a YOLO setup, you can just prompt Pi to set this up for you and explain your next steps.  Probably worth a quick evaluation from a trusted LLM to see if it's a good fit for your workflow.
+* If you're switching from a YOLO setup, you can just prompt Pi to set this up for you and explain your next steps.  Probably worth a quick evaluation from a trusted LLM to see if it's a good fit for your workflow.
