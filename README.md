@@ -40,9 +40,9 @@ Checkout the compose.yml, Dockerfile, and .gitignore for the full directory moun
 
 1. Clone the repo
 
-2. Manually read and update the AGENTS.md, this file goes in mounts/pi-config when you're done.
+2. Run: mkdir -p mounts/pi-config/agent mounts/memory/sqlite/ mounts/suggestions/ mounts/workspace/ /mounts/obsidianvaultpi/ mounts/pi-credentials/
 
-3. cd into ./pi-agent/mounts/ and then run: mkdir -p memory/sqlite/ suggestions/ workspace/ obsidianvaultpi/ pi-credentials/
+3. Manually read and update the AGENTS.md, this file goes in mounts/pi-config/agent when you're done.
 
 4. cd back into pi-agent/ and run: cp .env.example .env
 
