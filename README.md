@@ -1,4 +1,6 @@
-![Centered SVG Background](./bonedry-pi.svg)
+<div align="center">
+  <img src="bonedry-pi.svg" width="70%">
+</div>
 
 <div align="center">
 
