@@ -1,3 +1,5 @@
+![Centered SVG Background](./bonedry-pi.svg)
+
 <div align="center">
 
 # BareBones Docker Pi-Agent Container
@@ -50,12 +52,12 @@ Checkout the compose.yml, Dockerfile, and .gitignore for the full directory moun
 
 **Prerequisites** Docker + Docker Compose installed
 
-1. Clone the repo
+1. Clone the repo.
 ```bash
 git clone https://github.com/KevOS98/bonedry-pi.git
 ```
 
-2. cd into bonedry-pi and run: mkdir -p ./mounts/pi-config/agent ./mounts/memory/sqlite ./mounts/suggestions ./mounts/workspace ./mounts/obsidianvaultpi ./mounts/pi-credentials
+2. cd into bonedry-pi and make the ./mounts directories.
 ```bash
 cd bonedry-pi
 mkdir -p ./mounts/pi-config/agent \
@@ -71,7 +73,7 @@ mkdir -p ./mounts/pi-config/agent \
 cp AGENTS.md ./mounts/pi-config/agent/AGENTS.md
 ```
 
-4. cd back into bonedry-pi/ and run: cp .env.example .env
+4. Copy the .env.example to a new .env file in the main directory.
 ```bash
 cp .env.example .env
 ```
