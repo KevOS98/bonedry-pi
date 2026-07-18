@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="bonedry-pi.svg" width="70%">
+  <img src="bonedry-pi.svg" width="50%">
 </div>
 
 <div align="center">
