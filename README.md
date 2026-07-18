@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="bonedry-pi.svg" width="50%">
+  <img src="bonedry-pi.svg" width="40%">
 </div>
 
 <div align="center">
@@ -10,7 +10,7 @@
 
 Simple Docker container configuration for Pi Agent. Cross session durable memory, Pi configuration, plugins, projects, extensions, and credentials. 
 
-# ReadMe
+## ReadMe
 
 This is a minimal configuration for using Pi Agent in a Docker container while retaining 99% of the user level self improving benefits that make Pi so great.
 
@@ -22,7 +22,7 @@ The current repo configuration includes a custom AGENTS.md that serves as an ins
 
 Checkout the compose.yml, Dockerfile, and .gitignore for the full directory mount list in the repo and create them before running docker compose. They are listed below as well.
 
-# Mount Layout: 
+## Mount Layout: 
 1. bonedry-pi/mounts/pi-config:/root/.pi
 - This provides permanent direct access to the agent's configuration from host to the container.  It will retain any self edits Pi does to config, extensions applied, and plugin installs on the host through all sessions.
 
@@ -48,7 +48,7 @@ Checkout the compose.yml, Dockerfile, and .gitignore for the full directory moun
 * Not READ ONLY by default. Visit compose.yml and append :ro to this mount to apply READ ONLY permissions. I choose not to to prevent breaking known_hosts writes from Pi.
 - This mount is included for container git auth if you decide to put ssh keys under credentials. I also personally have gitconfig info for Pi in a markdown here as well.
 
-# QuickStart
+## QuickStart
 
 *If you're switching from a YOLO setup, you can just prompt Pi to set this up for you and explain your next steps.  Probably worth a quick evaluation from a trusted LLM to see if it's a good fit for your workflow.*
 
@@ -62,7 +62,7 @@ git clone https://github.com/KevOS98/bonedry-pi.git
 2. cd into bonedry-pi and make the ./mounts directories.
 ```bash
 cd bonedry-pi
-mkdir -p ./mounts/pi-config/agent \
+mkdir -p ./mounts/pi-config/agent/extensions \
          ./mounts/memory/sqlite \
          ./mounts/suggestions \
          ./mounts/workspace \
@@ -80,13 +80,24 @@ cp AGENTS.md ./mounts/pi-config/agent/AGENTS.md
 cp .env.example .env
 ```
 
-6. Edit .env and replace your provider and key for safe container injection
+6. Edit .env and replace your provider and key for safe container injection.
 
-7. Run the Docker container to your preferences
+7. Run the Docker container to your preferences.
 
-- Bonus: installing pi-web-access is recommended from the official Pi Agent packages docs on first docker instance
+8. (Optional) Awesome bone pi symbol on session_start. *Requires Kitty protocol supported terminal (Ghostty,Kitty,Wezterm).* 
+```bash
+cp bonedry-banner.ts ./mounts/pi-config/agent/extensions/bonedry-banner.ts
+```
 
-# **IMPORTANT**
+## Recommended Extensions
+1. pi install npm:pi-web-access
+2. pi install npm:@hypabolic/pi-hypa
+3. pi install npm:@r3b1s/pi-repair-layer
+
+- Huge shoutouts to these creators.  These alone have 10x my token efficiency and I highly recommend them.
+* *Must be installed after first Pi session*
+
+## **IMPORTANT**
 
 - This configuration has no built in health checks or resource limits by default. This is intentional for the philosophy of the environment.  They must be manually added or created under suggestions from the agent.
 
@@ -94,10 +105,8 @@ cp .env.example .env
 
 - This architecture assumes some knowledge about Docker containers. If you are confused, I suggest going over it with a model to fully grasp before launching. My rule of thumb is knowing every line's function in the Dockerfile and compose.yml.
 
-# Parting Wisdoms
+## Parting Wisdoms
 
 - If you're considering riding the YOLO wave like I was before making this, remember that it only takes a single moment for something to blast your machine or expose your information. The only true container limitation here is the amount of bloat driven from initialization (which is low as possible) and the need to manually implement suggestions/. The setup time is a worthy moat between potential disaster and your machine, and if you've stumbled upon this then I've done it for you :D.
 
 - Remember that Pi can autonomously handle building layers of increasing complexity on top of this architecture, if you choose so. These initial settings are meant to be simple enough for the widest range of models to handle and follow. This does mean that the AGENTS.md may need to be tailored if you're running significantly incapable models, so provide the repo as context and consult a free frontier model like claude sonnet to tailor it accordingly.
-
-- I'm probably gonna add some cool bone icon to load in new sessions at some point stay tuned.
